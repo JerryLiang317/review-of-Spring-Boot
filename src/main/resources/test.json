@@ -1,0 +1,22 @@
+{
+  "id": 123,
+  "name": "Jerry",
+  "score": 99.2,
+  "graduated": true,
+  "age": null,
+  "courseList": ["Math", "English", "biology"],
+  "pet": {
+    "name": "white",
+    "age": 5
+  },
+  "petList": [
+    {
+      "name": "black",
+      "age": 2
+    },
+    {
+      "name": "red",
+      "age": 6
+    }
+  ]
+}
