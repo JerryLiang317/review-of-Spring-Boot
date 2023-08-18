@@ -1,12 +1,15 @@
 package com.example.demo1;
 
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 public class StudentController {
 
     @PostMapping("/students")
-    public String create(@RequestBody Student student){
+    public String create(@RequestBody @Valid Student student){
        return "執行資料庫的 create 操作";
     }
 

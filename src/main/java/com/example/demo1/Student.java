@@ -1,7 +1,14 @@
 package com.example.demo1;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class Student {
+
+    @NotNull
     Integer id;
+
+    @NotBlank
     String name;
 
     public Integer getId() {
