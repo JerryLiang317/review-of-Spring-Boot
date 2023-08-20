@@ -64,13 +64,27 @@ public class StudentController {
         return "執行 DELETE sql";
     }
 
-    @GetMapping("/students")
-    public List<Student> select(){
-        String sql = "SELECT id, name FROM student";
+    @GetMapping("/students/{studentId}")
+    public Student select(@PathVariable Integer studentId){
+        String countsql = "SELECT count(*) FROM student";
+
+        Map<String, Object> countmap = new HashMap<>();
+
+        Integer count = namedParameterJdbcTemplate.queryForObject(countsql, countmap, Integer.class);
+
+        System.out.println("student table 中的總數是: " + count);
+
+        String sql = "SELECT id, name FROM student WHERE id = :studentId";
 
         Map<String, Object> map = new HashMap<>();
+        map.put("studentId", studentId);
 
         List<Student> list = namedParameterJdbcTemplate.query(sql, map, new StudentRowMapper());
-        return list;
+
+        if(list.size()>0){
+            return list.get(0);
+        } else {
+            return null;
+        }
     }
 }
